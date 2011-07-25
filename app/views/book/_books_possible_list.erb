@@ -1,0 +1,40 @@
+<p>books possible list:</p>
+<div class='rec_book_list'>
+<%hash = ActiveSupport::JSON.decode(@db_json_result) %>
+<%  hash['entry'].each {|item|%>
+  
+  <%author=Array.new%>
+  <%if item['author']!=nil%>  
+  <% item['author'].each{|a| author<< a['name']['$t']}%>
+  <%end%>
+
+  <%publisher=Array.new%>
+  <%if item['db:attribute']!=nil%> 
+  <% item['db:attribute'].each {|attr|%>
+  <%   if attr['@name']=='publisher' then%>
+  <%     publisher<<attr['$t']%>
+  <%   end%>
+  <% }%>
+  <%end%>
+  
+  <%links = Array.new%>
+  <%if item['link']!=nil%>
+    <%item['link'].each do|link|%>
+      <%if link['@rel']=='image'%>
+        <%links<<link['@href']%>
+      <%end%>
+    <%end%>
+  <%end%>
+  <%if links[0]!=nil%>
+    <% links[0].sub('spic','lpic')%>
+  <%end%>
+
+  <div class='book'>
+    <%if links[0]!=nil%>
+      <%=image_tag links[0].sub('spic','mpic')%>
+    <%end%>
+    <div class='book_info'><%=item['title']['$t']+" "+author.join(" ")+" "+publisher.join(" ")%></div>
+  <%= link_to 'Add',new_book_path%>
+  </div>
+<% }%>
+</div>

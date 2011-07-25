@@ -1,0 +1,7 @@
+<h1>Page to upload book</h1>
+
+<input type='text' id="book" onChange="<%= remote_function(:update=>'booksHintList',:url=>{:controller=>'book',:action=>'ajax_books_hint'},:with => "'q='+document.getElementById('book').value") %>"/>
+
+<div id='booksHintList'>
+ It's empty Now.
+</div>

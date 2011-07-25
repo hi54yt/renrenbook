@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  university: MyString
+  major: MyString
+  year_in: 2011-06-03
+
+two:
+  name: MyString
+  university: MyString
+  major: MyString
+  year_in: 2011-06-03
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  university :string(255)
+#  major      :string(255)
+#  year_in    :date
+#  created_at :datetime
+#  updated_at :datetime
+#
+

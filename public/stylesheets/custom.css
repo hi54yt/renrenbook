@@ -1,0 +1,12 @@
+.book{
+ float:left;
+ text-align:center;
+ width:120px; 
+}
+
+.book_info{
+ float:left;
+ width:90%;
+ text-align:center
+ margin:auto
+}
