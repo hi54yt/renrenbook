@@ -23,10 +23,11 @@ class RenrenController < ApplicationController
     #debugger
  
     access_token = client.web_server.get_access_token(params[:code], {:redirect_uri => "http://demo.com:3000/renren/loginnext"})
-    session[:renren_access_token]=JSON.parse(access_token)
+    logger.debug "access_token : #{access_token.token}"
+    session[:renren_access_token]= access_token
     #到了这里已经得到了access_token，我暂时把它存在session里面，方便以后使用
 
-    geturi=URI.parse(URI.encode("http://graph.renren.com/renren_api/session_key?oauth_token=#{session['renren_access_token']['access_token']}"))
+    geturi=URI.parse(URI.encode("http://graph.renren.com/renren_api/session_key?oauth_token=#{session['renren_access_token'].token}"))
     #获得Session Key,为调用renren api做准备
 
     res=JSON Net::HTTP.get(geturi)#这里我们就得到了人人 api
