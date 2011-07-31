@@ -10,7 +10,10 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
+
 class User < ActiveRecord::Base
-  has_many :books,:through=>''
+  has_many :ownerships
+  has_many :books, :through => :ownerships
 
 end
+

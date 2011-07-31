@@ -1,23 +1,29 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  book_id: 1
   user_id: 1
-  comment: MyString
+  book_id: 1
+  price: 1.5
+  howold: 1
+  comment: MyText
 
 two:
-  book_id: 1
   user_id: 1
-  comment: MyString
+  book_id: 1
+  price: 1.5
+  howold: 1
+  comment: MyText
 
 # == Schema Information
 #
-# Table name: userized_books
+# Table name: ownerships
 #
 #  id         :integer         not null, primary key
-#  book_id    :integer
 #  user_id    :integer
-#  comment    :string(255)
+#  book_id    :integer
+#  price      :float
+#  howold     :integer
+#  comment    :text
 #  created_at :datetime
 #  updated_at :datetime
 #

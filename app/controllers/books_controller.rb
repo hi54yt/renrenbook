@@ -1,89 +1,58 @@
 class BooksController < ApplicationController
-  # GET /books
-  # GET /books.xml
-  def index
-    @books = Book.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @books }
+  require 'net/http' 
+  
+  def douban_book_search(q)
+    db_url = "http://api.douban.com/book/subjects?q=#{q}&start-index=1&max-results=5&alt=json"
+    url = URI.parse(URI.encode(db_url))
+    res = Net::HTTP.get url
+    #debugger
+    db_book_hash = ActiveSupport::JSON.decode res #{db_book_json_str}
+    @booklist = []
+    db_book_hash['entry'].each do |item|
+      book = Book.new(:title => item['title']['$t'])
+      # TODO: combine author together or make it a list
+      book.author = item['author'][0]['name']['$t'] if !item['author'].nil? && !item['author'][0]['name'].nil?
+      item['link'].each do |l|
+        book.doubanlink = l['@href'] if l['@rel'] == 'alternate'
+        book.imagelink = l['@href'] if l['@rel'] == 'image'
+      end
+      book.attr = item['db:attribute']
+      item['db:attribute'].each do |att|
+        book.publisher = att['$t'] if att['@name'] == 'publisher'
+        book.ISBN10 = att['$t'] if att['@name'] == 'ISBN10'
+        book.ISBN13 = att['$t'] if att['@name'] == 'ISBN13'
+      end
+      @booklist.push book
     end
+    @booklist    
   end
 
-  # GET /books/1
-  # GET /books/1.xml
-  def show
-    @book = Book.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @book }
-    end
-  end
-
-  # GET /books/new
-  # GET /books/new.xml
   def new
-    @book = Book.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @book }
-    end
   end
 
-  # GET /books/1/edit
-  def edit
-    @book = Book.find(params[:id])
+  def index
   end
 
-  # POST /books
-  # POST /books.xml
-  def create
-    @book = Book.new(params[:book])
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to(@book, :notice => 'Book was successfully created.') }
-        format.xml  { render :xml => @book, :status => :created, :location => @book }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /books/1
-  # PUT /books/1.xml
-  def update
-    @book = Book.find(params[:id])
-
-    respond_to do |format|
-      if @book.update_attributes(params[:book])
-        format.html { redirect_to(@book, :notice => 'Book was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /books/1
-  # DELETE /books/1.xml
-  def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(books_url) }
-      format.xml  { head :ok }
-    end
-  end
-
-  def add_book
-    isbn13 = nil
+  def search
+    # search douban 
+    # TODO: cache what we have, there are too method. 1. cache query & douban response. 2. search what we have first, namely permanent & partial cache
+    douban_book_search params[:q]
     
-     get_book_by_isbn
   end
+
+  def delete
+  end
+
+  def edit
+  end
+
+  def show
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
 end

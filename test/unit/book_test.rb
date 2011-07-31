@@ -7,15 +7,22 @@ class BookTest < ActiveSupport::TestCase
   end
 end
 
+
+
 # == Schema Information
 #
 # Table name: books
 #
 #  id         :integer         not null, primary key
-#  name       :string(255)
 #  publisher  :string(255)
-#  pubdate    :date
 #  created_at :datetime
 #  updated_at :datetime
+#  title      :string(255)
+#  doubanlink :string(255)
+#  imagelink  :string(255)
+#  author     :string(255)
+#  ISBN10     :string(255)
+#  ISBN13     :string(255)
+#  attr       :text
 #
 

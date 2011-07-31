@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110719095741) do
+ActiveRecord::Schema.define(:version => 20110727182545) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -18,22 +18,17 @@ ActiveRecord::Schema.define(:version => 20110719095741) do
     t.datetime "updated_at"
   end
 
-  create_table "authors_books", :id => false, :force => true do |t|
-    t.integer "author_id"
-    t.integer "book_id"
-  end
-
   create_table "books", :force => true do |t|
-    t.string   "name"
     t.string   "publisher"
-    t.date     "pubdate"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "books_users", :id => false, :force => true do |t|
-    t.integer "book_id"
-    t.integer "user_id"
+    t.string   "title"
+    t.string   "doubanlink"
+    t.string   "imagelink"
+    t.string   "author"
+    t.string   "ISBN10"
+    t.string   "ISBN13"
+    t.text     "attr"
   end
 
   create_table "guanxi_of_book_author", :force => true do |t|
@@ -46,6 +41,19 @@ ActiveRecord::Schema.define(:version => 20110719095741) do
   add_index "guanxi_of_book_author", ["author_id"], :name => "index_guanxi_of_book_author_on_author_id"
   add_index "guanxi_of_book_author", ["book_id", "author_id"], :name => "index_guanxi_of_book_author_on_book_id_and_author_id", :unique => true
   add_index "guanxi_of_book_author", ["book_id"], :name => "index_guanxi_of_book_author_on_book_id"
+
+  create_table "ownerships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.float    "price"
+    t.integer  "howold"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ownerships", ["book_id"], :name => "index_ownerships_on_book_id"
+  add_index "ownerships", ["user_id"], :name => "index_ownerships_on_user_id"
 
   create_table "userized_books", :force => true do |t|
     t.integer  "book_id"

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserizedBookTest < ActiveSupport::TestCase
+class OwnershipTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true
@@ -9,12 +9,14 @@ end
 
 # == Schema Information
 #
-# Table name: userized_books
+# Table name: ownerships
 #
 #  id         :integer         not null, primary key
-#  book_id    :integer
 #  user_id    :integer
-#  comment    :string(255)
+#  book_id    :integer
+#  price      :float
+#  howold     :integer
+#  comment    :text
 #  created_at :datetime
 #  updated_at :datetime
 #

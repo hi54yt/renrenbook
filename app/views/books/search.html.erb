@@ -1,0 +1,11 @@
+<h1>
+Search
+</h1>
+<div>
+  
+  <ul>
+    <% @booklist.each do |book| %>
+      <li> <%= image_tag book.imagelink %> <%= book.title %> </li>
+    <% end %>
+  </ul>
+</div>

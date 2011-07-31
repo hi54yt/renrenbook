@@ -1,9 +1,6 @@
 RenRenBook::Application.routes.draw do
-  resources :authors
-
+  match "books/search/:q" => 'books#search'
   resources :books
-
-  resources :users
 
   get "renren/login"
 
