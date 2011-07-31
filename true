@@ -1,3 +1,0 @@
-Unable to annotate guanxi_of_book_author.rb: #<ActiveRecord::StatementInvalid: Could not find table 'guanxi_of_book_authors'>
-
-Annotated (2): Ownership, Book

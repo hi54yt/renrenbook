@@ -1,0 +1,91 @@
+login: connect to renren
+sell & buy
+  Who sell who buy, sell & buy what
+  sell books
+    input & search
+    douban API return info of book, recommend ISBN
+      select & input other info, 80%, price
+    input by users, P2
+
+  contact
+    table, input
+    override allowed in book level
+
+  buy books
+    input & search in our database
+    Q: how to display result page
+      book -> item list -> item & owner contact
+
+  sell successfully
+    owner will withdraw to avoid dicturbing
+    rank book to owner by page view of owner contact
+
+  social distribution
+    when a user publish a book to sell
+    buy a book
+
+  if user cannot search a satisfied book, we can remember it
+    tell it to owner
+    when somebody publish a book, tell the subscriber
+
+    
+
+
+
+
+
+
+title
+link: the link to douban page
+imagelink
+author
+pulisher
+ISBN10
+ISBN13
+attribute
+
+{"category":{
+    "@scheme":"http://www.douban.com/2007#kind",
+    "@term":"http://www.douban.com/2007#book"},
+    "db:tag":[
+        {"@count":20,"@name":"片山恭一"},
+        {"@count":14,"@name":"日本"},
+        {"@count":10,"@name":"小说"},
+        {"@count":8,"@name":"日本文学"},
+        {"@count":4,"@name":"爱情"}
+    ],
+    "title":{"$t":"满月之夜白鲸现"},
+    "author":[
+        {"name":{"$t":"（日）片山恭一"}}
+    ],
+    "content":{"$t":"冷静地想一想吧！公寓的一个房间里只有两上人，连被褥都铺
+    好了，理应是犯错误的时候，我为什么却这么拘谨？一直胆小的毛病又犯了。事到
+    如今，不要说上床，就连接吻也还差得很远。这就是横亘在男人和女人之间的又深
+    又暗的河流吗？\n    如果有可能，我希望把手伸进她的心里，把她内心所有的东
+    西都掏出来。她对我究竟是一种什么感觉呢？我在她的心昊确实占有一席之地吗？
+    抑或只是她生命中的匆匆过客？"},
+    "link":[
+        {"@rel":"self","@href":"http://api.douban.com/book/subject/1220562"},
+        {"@rel":"alternate","@href":"http://book.douban.com/subject/1220562/"},
+        {"@rel":"image","@href":"http://t.douban.com/spic/s1747553.jpg"}
+    ],
+    "db:attribute":[
+        {"$t":"（日）片山恭一","@name":"author"},
+        {"$t":"7543632608","@name":"isbn10"},
+        {"$t":"9787543632608","@name":"isbn13"},
+        {"$t":"180","@name":"pages"},
+        {"$t":"豫人","@name":"tranlator"},
+        {"$t":"18.00","@name":"price"},
+        {"$t":"青岛出版社","@name":"publisher"},
+        {"$t":"平装(无盘)","@name":"binding"},
+        {"$t":"片山恭一，1959年生于日本爱媛县，九州大学农学系农业经济学专业
+        毕业。学生时代通读了包括夏目漱石和大江健三郎在内的日本近现代文学全集，
+        同时读了笛卡尔、莱布尼茨到结构主义的欧洲近现代哲学。也读了马克思。
+        学士论文写的是马克思，硕士论文写的是恩格斯。二十二三岁开始创作小说。
+        代表作有《在世界中心呼唤爱》、《世界在你不知道的地方运转》、《气息》、
+        《别相信约翰·列侬》、《满月之夜白鲸现》、《空镜头》以及新作《倘若我在
+        彼岸》、《雨天的海豚们》等。","@name":"author-intro"}
+    ],
+    "id":{"$t":"http://api.douban.com/book/subject/1220562"},
+    "gd:rating":{"@min":1,"@numRaters":39,"@average":"3.69","@max":5}
+}
