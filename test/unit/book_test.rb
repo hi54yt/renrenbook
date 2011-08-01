@@ -9,6 +9,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: books
@@ -24,5 +25,6 @@ end
 #  ISBN10     :string(255)
 #  ISBN13     :string(255)
 #  attr       :text
+#  doubanid   :integer
 #
 

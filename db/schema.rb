@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110727182545) do
+ActiveRecord::Schema.define(:version => 20110731161553) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -29,7 +29,10 @@ ActiveRecord::Schema.define(:version => 20110727182545) do
     t.string   "ISBN10"
     t.string   "ISBN13"
     t.text     "attr"
+    t.integer  "doubanid"
   end
+
+  add_index "books", ["doubanid"], :name => "index_books_on_doubanid"
 
   create_table "guanxi_of_book_author", :force => true do |t|
     t.integer  "book_id"

@@ -1,2 +1,9 @@
 <h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div>
+  <%= image_tag @book.imagelink %> <%= @book.title %> 
+  <br/> 
+  <span><%= "出版社：#{@book.publisher}" %></span>
+  <span><%= "作者：#{@book.author}" %></span>
+  <span><%= "ISBN：#{@book.ISBN13}" %></span>
+  <span><%= "attr：#{@book.attr.to_s}" %></span>
+</div>
