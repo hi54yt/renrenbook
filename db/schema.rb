@@ -10,12 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110727182545) do
+ActiveRecord::Schema.define(:version => 20110801161401) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "authors_books", :id => false, :force => true do |t|
+    t.integer "author_id"
+    t.integer "book_id"
   end
 
   create_table "books", :force => true do |t|
@@ -29,6 +34,11 @@ ActiveRecord::Schema.define(:version => 20110727182545) do
     t.string   "ISBN10"
     t.string   "ISBN13"
     t.text     "attr"
+  end
+
+  create_table "books_users", :id => false, :force => true do |t|
+    t.integer "book_id"
+    t.integer "user_id"
   end
 
   create_table "guanxi_of_book_author", :force => true do |t|
@@ -73,6 +83,9 @@ ActiveRecord::Schema.define(:version => 20110727182545) do
     t.date     "year_in"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "renren_id"
   end
+
+  add_index "users", ["renren_id"], :name => "index_users_on_renren_id"
 
 end

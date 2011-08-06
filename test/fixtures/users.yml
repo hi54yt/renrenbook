@@ -12,6 +12,7 @@ two:
   major: MyString
   year_in: 2011-06-03
 
+
 # == Schema Information
 #
 # Table name: users
@@ -23,5 +24,6 @@ two:
 #  year_in    :date
 #  created_at :datetime
 #  updated_at :datetime
+#  renren_id  :string(255)
 #
 

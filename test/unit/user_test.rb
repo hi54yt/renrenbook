@@ -7,6 +7,7 @@ class UserTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: users
@@ -18,5 +19,6 @@ end
 #  year_in    :date
 #  created_at :datetime
 #  updated_at :datetime
+#  renren_id  :string(255)
 #
 

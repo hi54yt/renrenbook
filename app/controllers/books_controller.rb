@@ -26,8 +26,8 @@ class BooksController < ApplicationController
     end
     @booklist    
   end
-
-  def new
+  
+	def new
   end
 
   def index
