@@ -1,4 +1,9 @@
 RenRenBook::Application.routes.draw do
+
+  resources :contacts
+
+  resources :ownerships
+
   match "books/search/:q" => 'books#search'
   match "books/search" => 'books#search'
   match "books/display" => 'books#show' 
