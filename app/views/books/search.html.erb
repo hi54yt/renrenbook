@@ -5,7 +5,8 @@ Search
   
   <ul>
     <% @booklist.each do |book| %>
-      <li> <%= image_tag book.imagelink %> <%= book.title %> </li>
+      <li> <%= image_tag book.imagelink %> <%= book.title %>
+      <%= link_to book.title, :action => "show", :doubanid => book.doubanid  %> </li>
     <% end %>
   </ul>
 </div>

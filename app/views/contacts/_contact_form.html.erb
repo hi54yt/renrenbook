@@ -1,0 +1,11 @@
+<%= form_for @ownership do |f| %>
+  <div class="field">
+    <p> Override the default contact? </p>
+    <%= check_box_tag 'override', 'yes', true %><br/>
+    <%= label_tag :contact, :phone %>
+    <%= text_field :contact, :phone %><br/>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801161401) do
+ActiveRecord::Schema.define(:version => 20110801151423) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -34,23 +34,22 @@ ActiveRecord::Schema.define(:version => 20110801161401) do
     t.string   "ISBN10"
     t.string   "ISBN13"
     t.text     "attr"
+    t.integer  "doubanid"
   end
 
-  create_table "books_users", :id => false, :force => true do |t|
-    t.integer "book_id"
-    t.integer "user_id"
-  end
+  add_index "books", ["doubanid"], :name => "index_books_on_doubanid"
 
-  create_table "guanxi_of_book_author", :force => true do |t|
-    t.integer  "book_id"
-    t.integer  "author_id"
+  create_table "contacts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "qq"
+    t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "guanxi_of_book_author", ["author_id"], :name => "index_guanxi_of_book_author_on_author_id"
-  add_index "guanxi_of_book_author", ["book_id", "author_id"], :name => "index_guanxi_of_book_author_on_book_id_and_author_id", :unique => true
-  add_index "guanxi_of_book_author", ["book_id"], :name => "index_guanxi_of_book_author_on_book_id"
+  add_index "contacts", ["user_id"], :name => "index_contacts_on_user_id"
 
   create_table "ownerships", :force => true do |t|
     t.integer  "user_id"
@@ -60,21 +59,11 @@ ActiveRecord::Schema.define(:version => 20110801161401) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contact_id"
   end
 
   add_index "ownerships", ["book_id"], :name => "index_ownerships_on_book_id"
   add_index "ownerships", ["user_id"], :name => "index_ownerships_on_user_id"
-
-  create_table "userized_books", :force => true do |t|
-    t.integer  "book_id"
-    t.integer  "user_id"
-    t.string   "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "userized_books", ["book_id"], :name => "index_userized_books_on_book_id"
-  add_index "userized_books", ["user_id"], :name => "index_userized_books_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

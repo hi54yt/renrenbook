@@ -1,8 +1,19 @@
 RenRenBook::Application.routes.draw do
+<<<<<<< HEAD
   root :to=>'Renren#new'
   get "sessions/new"
+=======
+
+  resources :contacts
+
+  resources :ownerships
+>>>>>>> 9d8520a26919d100ddea3e527826d87986038c1d
 
   match "books/search/:q" => 'books#search'
+  match "books/search" => 'books#search'
+  match "books/display" => 'books#show' 
+  match "books/test" => "books#test"
+
   resources :books
   resources :users
   match  "renren/login"=>'Renren#login'

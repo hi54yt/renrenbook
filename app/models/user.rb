@@ -43,3 +43,13 @@ end
 #  renren_id  :string(255)
 #
 
+<<<<<<< HEAD
+=======
+class User < ActiveRecord::Base
+  has_many :ownerships
+  has_many :contacts 
+  has_many :books, :through => :ownerships
+
+end
+
+>>>>>>> 9d8520a26919d100ddea3e527826d87986038c1d
