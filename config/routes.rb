@@ -1,15 +1,15 @@
 RenRenBook::Application.routes.draw do
-  root :to=>'Renrens#new'
+  root :to=>'Renren#new'
   get "sessions/new"
 
   match "books/search/:q" => 'books#search'
   resources :books
   resources :users
-  match  "renrens/login"=>'Renrens#login'
+  match  "renren/login"=>'Renren#login'
 
-  match "renren/loginnext"=>'renrens#loginnext'
+  match "renren/loginnext"=>'renren#loginnext'
 
-  get "renrens/message"
+  get "renren/message"
 
   #get "renren/user"
   get "main/login"

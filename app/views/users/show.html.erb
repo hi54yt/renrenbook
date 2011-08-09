@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<%if signed_in?%>
+  hello <%= current_user.name%>
+<%else%>
+  hello Guest
+<%end%>
 <p>
   <b>Name:</b>
   <%= @user.name %>
